@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="WinUIAdaptiveMasterDetail.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIAdaptiveMasterDetail"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <local:WinUIMasterDetail x:Name="GreatThing">
+        <local:WinUIMasterDetail.LeftContent>
+            <StackPanel Margin="12" Spacing="6">
+                <TextBlock Text="Left"/>
+                <Button Click="Button_Click" Content="Switch to right"/>
+            </StackPanel>
+        </local:WinUIMasterDetail.LeftContent>
+        <local:WinUIMasterDetail.RightContent>
+            <StackPanel Margin="12" Spacing="6">
+                <TextBlock Text="Right"/>
+                <Button Click="Button_Click_1" Content="Switch to left"/>
+            </StackPanel>
+        </local:WinUIMasterDetail.RightContent>
+        <local:WinUIMasterDetail.Footer>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <HyperlinkButton x:Name="PlayButton" BorderThickness="0" Padding="10" VerticalAlignment="Center">
+                    <FontIcon Glyph=""/>
+                </HyperlinkButton>
+                <HyperlinkButton Grid.Column="1" BorderThickness="0" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <StackPanel>
+                        <TextBlock TextAlignment="Center" Foreground="{ThemeResource TextFillColorPrimaryBrush}" FontSize="13" LineHeight="15" LineStackingStrategy="BlockLineHeight" FontWeight="SemiBold" Text="Sound"/>
+                        <TextBlock TextAlignment="Center" Foreground="{ThemeResource TextFillColorPrimaryBrush}" FontSize="11" LineHeight="15" LineStackingStrategy="BlockLineHeight" Text="Antiloop"/>
+                    </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton x:Name="CloseButton" Grid.Column="2" BorderThickness="0" Padding="10" VerticalAlignment="Center" Click="CloseButton_Click">
+                    <FontIcon Glyph=""/>
+                </HyperlinkButton>
+            </Grid>
+        </local:WinUIMasterDetail.Footer>
+    </local:WinUIMasterDetail>
+</Page>

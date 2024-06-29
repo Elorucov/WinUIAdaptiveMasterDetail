@@ -12,6 +12,7 @@
             <StackPanel Margin="12" Spacing="6">
                 <TextBlock Text="Left"/>
                 <Button Click="Button_Click" Content="Switch to right"/>
+                <ToggleButton Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Content="Toggle compact mode"/>
             </StackPanel>
         </local:WinUIMasterDetail.LeftContent>
         <local:WinUIMasterDetail.RightContent>

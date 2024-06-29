@@ -11,8 +11,8 @@
 
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="LeftCD" Width="1*" MinWidth="320"/>
-            <ColumnDefinition x:Name="RightCD" Width="1.75*"/>
+            <ColumnDefinition x:Name="LeftCD" Width="320" MinWidth="320"/>
+            <ColumnDefinition x:Name="RightCD"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,6 +26,13 @@
 
         <ContentPresenter x:Name="LeftContentContainer" Grid.Row="1" Content="{x:Bind LeftContent, Mode=TwoWay}"/>
         <ContentPresenter x:Name="RightContentContainer" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Content="{x:Bind RightContent, Mode=TwoWay}"/>
+
+        <local:GridSplitter x:Name="Splitter" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Width="16" HorizontalAlignment="Left" ResizeBehavior="BasedOnAlignment" ResizeDirection="Columns">
+            <local:GridSplitter.RenderTransform>
+                <TranslateTransform X="-7" />
+            </local:GridSplitter.RenderTransform>
+        </local:GridSplitter>
+
         <StackPanel x:Name="FooterContainer" Grid.Row="2">
             <Rectangle x:Name="LeftDivider" Height="1" Fill="{ThemeResource DividerStrokeColorDefaultBrush}"/>
             <ContentPresenter x:Name="FCP" Content="{x:Bind Footer, Mode=TwoWay}"/>

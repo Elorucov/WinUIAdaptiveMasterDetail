@@ -50,15 +50,12 @@ namespace WinUIAdaptiveMasterDetail {
             set { SetValue(IsRightPaneShowingProperty, value); SwitchPane(value); }
         }
 
-
-        // TODO: not implemented yet
-
         public static readonly DependencyProperty LeftPaneIsCompactProperty = DependencyProperty.Register(
             nameof(LeftPaneIsCompact), typeof(bool), typeof(WinUIMasterDetail), new PropertyMetadata(default));
 
         public bool LeftPaneIsCompact {
             get { return (bool)GetValue(LeftPaneIsCompactProperty); }
-            set { SetValue(LeftPaneIsCompactProperty, value); }
+            set { SetValue(LeftPaneIsCompactProperty, value); SetUpView(); }
         }
 
         public double RightContentWidth { get { return ActualWidth >= 720 ? RightContentContainer.ActualWidth : ActualWidth; } }
@@ -140,11 +137,20 @@ namespace WinUIAdaptiveMasterDetail {
                 Grid.SetColumn(RightContentContainer, 1);
                 Grid.SetRowSpan(RightContentContainer, 2);
                 Grid.SetColumnSpan(FooterContainer, 1);
+                LeftCD.MaxWidth = ActualWidth / 2;
+                if (LeftPaneIsCompact) {
+                    LeftCD.MinWidth = 72;
+                    LeftCD.Width = new GridLength(72);
+                } else {
+                    LeftCD.MinWidth = 320;
+                    LeftCD.Width = new GridLength(320, GridUnitType.Pixel);
+                }
 
                 LayerBackground.Opacity = 0;
                 LayerBackgroundRight.Opacity = 1;
                 LeftContentContainer.Visibility = Visibility.Visible;
                 RightContentContainer.Visibility = Visibility.Visible;
+                Splitter.Visibility = LeftPaneIsCompact ? Visibility.Collapsed : Visibility.Visible;
                 LeftDivider.Opacity = 1;
             } else {
                 Grid.SetColumnSpan(LeftContentContainer, 2);
@@ -155,6 +161,7 @@ namespace WinUIAdaptiveMasterDetail {
                 LayerBackground.Opacity = 1;
                 LayerBackgroundRight.Opacity = 0;
                 SwitchPane(IsRightPaneShowing);
+                Splitter.Visibility = Visibility.Collapsed;
             }
         }
 

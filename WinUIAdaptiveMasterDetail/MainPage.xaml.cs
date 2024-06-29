@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,6 +23,14 @@ namespace WinUIAdaptiveMasterDetail {
 
         private void CloseButton_Click(object sender, RoutedEventArgs e) {
             GreatThing.Footer = null;
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e) {
+            GreatThing.LeftPaneIsCompact = true;
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e) {
+            GreatThing.LeftPaneIsCompact = false;
         }
     }
 }

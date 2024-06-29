@@ -7,10 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <local:WinUIMasterDetail x:Name="GreatThing">
+    <local:WinUIMasterDetail x:Name="GreatThing" LeftPaneIsCompactChanged="GreatThing_LeftPaneIsCompactChanged">
         <local:WinUIMasterDetail.LeftContent>
             <StackPanel Margin="12" Spacing="6">
-                <TextBlock Text="Left"/>
+                <TextBlock x:Name="debug" Text="Left"/>
                 <Button Click="Button_Click" Content="Switch to right"/>
                 <ToggleButton Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Content="Toggle compact mode"/>
             </StackPanel>

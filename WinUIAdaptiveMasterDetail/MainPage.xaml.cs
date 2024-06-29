@@ -32,5 +32,9 @@ namespace WinUIAdaptiveMasterDetail {
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e) {
             GreatThing.LeftPaneIsCompact = false;
         }
+
+        private void GreatThing_LeftPaneIsCompactChanged(object sender, System.EventArgs e) {
+            debug.Text = GreatThing.LeftPaneIsCompact ? "Compact" : "Normal";
+        }
     }
 }

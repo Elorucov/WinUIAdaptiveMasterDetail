@@ -55,12 +55,13 @@ namespace WinUIAdaptiveMasterDetail {
 
         public bool LeftPaneIsCompact {
             get { return (bool)GetValue(LeftPaneIsCompactProperty); }
-            set { SetValue(LeftPaneIsCompactProperty, value); SetUpView(); }
+            set { SetValue(LeftPaneIsCompactProperty, value); SetUpView(); LeftPaneIsCompactChanged?.Invoke(this, EventArgs.Empty); }
         }
 
         public double RightContentWidth { get { return ActualWidth >= 720 ? RightContentContainer.ActualWidth : ActualWidth; } }
 
         public event EventHandler RightPaneShowingChanged;
+        public event EventHandler LeftPaneIsCompactChanged;
 
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
@@ -185,7 +186,7 @@ namespace WinUIAdaptiveMasterDetail {
 
         private void RightContentContainer_LayoutUpdated(object sender, object e) {
             RightContentContainer.LayoutUpdated -= RightContentContainer_LayoutUpdated;
-            RightPaneShowingChanged?.Invoke(this, new EventArgs());
+            RightPaneShowingChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CoreWindow_KeyUpDown(CoreWindow sender, KeyEventArgs args) {
